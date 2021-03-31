@@ -1,24 +1,20 @@
-# hypercore-promise
+# ddatabase-promise
 
-[![Build Status](https://travis-ci.com/geut/hypercore-promise.svg?branch=master)](https://travis-ci.com/geut/hypercore-promise)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-
-> An async/await based wrapper for [hypercore](https://github.com/hypercore-protocol/hypercore) (v9+)
+> An async/await based wrapper for [ddatabase](https://github.com/dwebprotocol/ddatabase) (v10+)
 
 ## <a name="install"></a> Install
 
 ```
-$ npm install @geut/hypercore-promise
+$ npm install @dwebcore/ddatabase-promise
 ```
 
 ## <a name="usage"></a> Usage
 
 ```javascript
-const hypercore = require('@geut/hypercore-promise')
+const ddatabase = require('@dwebcore/ddatabase-promise')
 
 ;(async () => {
-  const feed = hypercore('./my-first-dataset', {valueEncoding: 'utf-8'})
+  const feed = ddatabase('./my-first-dataset', {valueEncoding: 'utf-8'})
 
   await feed.append('hello')
   await feed.append('world')
@@ -28,7 +24,7 @@ const hypercore = require('@geut/hypercore-promise')
 })
 ```
 
-### Differences with Hypercore
+### Differences with Ddatabase
 
 Some methods like `get` and `download` not only use callbacks but also returns a value directly.
 
@@ -41,14 +37,14 @@ const id = feed.get(0, (err, data) => {
 Since our methods return promises what you need to do to get the internal value is to use our function helper `getValue`.
 
 ```javascript
-const { getValue } = require('hypercore-promise')
+const { getValue } = require('ddatabase-promise')
 
 const promise = feed.get(0)
 const id = getValue(promise)
 promise.then(data => console.log(data))
 ```
 
-`hypercore-promise` already detects the internal value so you don't need to use `getValue` in that case.
+`ddatabase-promise` already detects the internal value so you don't need to use `getValue` in that case.
 
 ```javascript
 const promise = feed.get(0)
@@ -60,12 +56,9 @@ promise.catch(err => {
 
 ## <a name="issues"></a> Issues
 
-:bug: If you found an issue we encourage you to report it on [github](https://github.com/geut/hypercore-promise/issues). Please specify your OS and the actions to reproduce it.
+:bug: If you found an issue we encourage you to report it on [github](https://github.com/dwebprotocol/ddatabase-promise/issues). Please specify your OS and the actions to reproduce it.
 
-## <a name="contribute"></a> Contributing
-
-:busts_in_silhouette: Ideas and contributions to the project are welcome. You must follow this [guideline](https://github.com/geut/hypercore-promise/blob/master/CONTRIBUTING.md).
 
 ## License
 
-MIT © A [**GEUT**](http://geutstudio.com/) project
+MIT © A dwebprotocol project

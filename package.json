@@ -1,7 +1,7 @@
 {
-  "name": "@geut/hypercore-promise",
-  "version": "2.1.1",
-  "description": "An async/await based wrapper for hypercore (v8+)",
+  "name": "@dwebcore/ddatabase-promise",
+  "version": "1.0.0",
+  "description": "An async/await based wrapper for dDatabase v10+",
   "main": "index.js",
   "files": [
     "lib",
@@ -18,7 +18,7 @@
     "prepublishOnly": "npm test"
   },
   "dependencies": {
-    "hypercore": "^9.0.0"
+    "ddatabase": "^10.0.0"
   },
   "devDependencies": {
     "@geut/chan": "^2.2.1",
@@ -37,24 +37,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geut/hypercore-promise.git"
+    "url": "git+https://github.com/dwebprotocol/ddatabase-promise.git"
   },
   "keywords": [
-    "dat",
-    "hypercore",
+    "dweb",
+    "ddatabase",
     "p2p",
     "async-await",
     "promises"
   ],
   "author": {
-    "name": "GEUT",
-    "email": "contact@geutstudio.com"
+    "name": "PeepsLabs",
+    "email": "<peepslabs@gmail.com>"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/geut/hypercore-promise/issues"
+    "url": "https://github.com/dwebprotocol/ddatabase-promise/issues"
   },
-  "homepage": "https://github.com/geut/hypercore-promise#readme",
+  "homepage": "https://dwebx.org",
   "publishConfig": {
     "access": "public"
   }
