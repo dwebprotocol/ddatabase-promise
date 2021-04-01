@@ -18,6 +18,7 @@
     "prepublishOnly": "npm test"
   },
   "dependencies": {
+    "buffer-from": "^1.1.1",
     "ddatabase": "^10.0.0"
   },
   "devDependencies": {
