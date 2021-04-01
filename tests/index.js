@@ -1,16 +1,16 @@
 const test = require('tape')
-const hypercorePromise = require('..')
-const hypercore = require('hypercore')
+const ddatabasePromise = require('..')
+const ddatabase = require('ddatabase')
 const ram = require('random-access-memory')
 const tempy = require('tempy')
 
-test('default hypercore', async function (t) {
+test('default ddatabase', async function (t) {
   t.plan(4)
 
   const dir = tempy.directory()
 
   t.comment(`Creating a feed in: ${dir}`)
-  const feed = hypercorePromise(dir, { valueEncoding: 'utf-8' })
+  const feed = ddatabasePromise(dir, { valueEncoding: 'utf-8' })
 
   await feed.ready()
   t.ok(Buffer.isBuffer(feed.key), 'Feed is ready and has a key')
@@ -28,11 +28,11 @@ test('default hypercore', async function (t) {
   t.equal(msg, 'foo')
 })
 
-test('set an external hypercore instance', async function (t) {
+test('set an external ddatabase instance', async function (t) {
   t.plan(1)
 
-  const _feed = hypercore(ram)
-  const feed = hypercorePromise(_feed)
+  const _feed = ddatabase(ram)
+  const feed = ddatabasePromise(_feed)
   await feed.ready()
   t.equal(_feed._storage, feed._storage)
 })
@@ -40,6 +40,6 @@ test('set an external hypercore instance', async function (t) {
 test('cache methods', async function (t) {
   t.plan(1)
 
-  const feed = hypercorePromise(ram)
+  const feed = ddatabasePromise(ram)
   t.equal(feed.ready, feed.ready, 'Should get the same function')
 })

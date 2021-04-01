@@ -1,17 +1,17 @@
 const { callbackMethods, cancelableMethods } = require('./methods')
 
-const kHypercore = Symbol('hypercore')
+const kDDatabase = Symbol('ddatabase')
 const kValue = Symbol('value')
 
 const getValue = value => value && typeof value === 'object' ? value[kValue] : null
 
-class HypercorePromise {
+class DDatabasePromise {
   constructor (...args) {
     let feed
     if (args.length === 1 && args[0].get && args[0].append) {
       feed = args[0]
     } else {
-      feed = require('hypercore')(...args)
+      feed = require('ddatabase')(...args)
     }
 
     this._cache = {}
@@ -20,7 +20,7 @@ class HypercorePromise {
   }
 
   get (target, propKey) {
-    if (propKey === kHypercore) return target
+    if (propKey === kDDatabase) return target
 
     const value = Reflect.get(target, propKey)
     if (typeof value === 'function') return this._getMethod(target, propKey, value)
@@ -77,7 +77,7 @@ class HypercorePromise {
   }
 }
 
-module.exports = (...args) => new HypercorePromise(...args)
-module.exports.HypercorePromise = HypercorePromise
-module.exports.getHypercore = hypercorePromise => hypercorePromise[kHypercore]
+module.exports = (...args) => new DDatabasePromise(...args)
+module.exports.DDatabasePromise = DDatabasePromise
+module.exports.getDDatabase = ddatabasePromise => ddatabasePromise[kDDatabase]
 module.exports.getValue = getValue
